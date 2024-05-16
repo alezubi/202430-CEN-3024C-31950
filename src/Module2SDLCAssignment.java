@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+//Alejandro Zubillaga , CEN-3024C-31950 05/16/2024
 //This class will encapsulate the book information (ID, title, and author) and provide methods to access and modify the book data.
 class Book {
     private int id;
@@ -30,17 +31,20 @@ class Book {
         return author;
     }
 }
-// This class will be responsible for managing the collection of books. It will have the following methods:
-// addBooksFromFile(String filePath): This method will read the book information from the provided text file and add the books to the collection.
-// removeBook(int bookId): This method will remove a book from the collection using its unique ID number.
-// listAllBooks(): This method will display the list of all books currently in the collection.
+
+//Alejandro Zubillaga , CEN-3024C-31950 05/16/2024
+//This class will be responsible for managing the collection of books. It will have the following methods:
+//addBooksFromFile(String filePath): This method will read the book information from the provided text file and add the books to the collection.
+//removeBook(int bookId): This method will remove a book from the collection using its unique ID number.
+//listAllBooks(): This method will display the list of all books currently in the collection.
 class Library {
     private Map<Integer, Book> books;
 
     public Library() {
         books = new HashMap<>();
     }
-  //  addBooksFromFile(String filePath): Read book data from file and add to collection
+  //addBooksFromFile(String filePath): Read book data from file and add to collection
+  //filePath (String): The file path of the text file containing the book information.
     public void addBooksFromFile(String filePath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -66,7 +70,8 @@ class Library {
             System.out.println("Error reading file: " + e.getMessage());
         }
     }
-// removeBook(int bookId): Remove a book from the collection
+//removeBook(int bookId): Remove a book from the collection
+//bookId (int): The unique ID number of the book to be removed from the collection.
     public void removeBook(int bookId) {
         if (books.containsKey(bookId)) {
             books.remove(bookId);
@@ -75,7 +80,7 @@ class Library {
             System.out.println("Book with ID " + bookId + " not found in the collection.");
         }
     }
-// listAllBooks(): Display the list of all books in the collection
+//listAllBooks(): Display the list of all books in the collection
     public void listAllBooks() {
         if (books.isEmpty()) {
             System.out.println("The collection is empty.");
@@ -87,7 +92,13 @@ class Library {
         }
     }
 }
+
+//Alejandro Zubillaga , CEN-3024C-31950 05/16/2024
 //main controller
+//The Library Management System (LMS) is a console-based application designed to manage the collection of books in a library. The key features and functionality of the LMS are:
+//Add new books to the collection from a text file: The system should be able to read book information (unique ID, title, and author) from a text file and add the books to the collection.
+//Remove a book from the collection using its ID number: The system should allow users to remove a book from the collection by providing the book's unique ID number.
+//List all books currently in the collection: The system should display a list of all the books currently in the collection, including their ID, title, and author.
 public class Module2SDLCAssignment {
     public static void main(String[] args) {
         Library library = new Library();
@@ -102,7 +113,7 @@ public class Module2SDLCAssignment {
             System.out.print("Enter your choice (1-4): ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -113,7 +124,7 @@ public class Module2SDLCAssignment {
                 case 2:
                     System.out.print("Enter the book ID to remove: ");
                     int bookId = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline character
+                    scanner.nextLine();
                     library.removeBook(bookId);
                     break;
                 case 3:
