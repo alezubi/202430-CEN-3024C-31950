@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+//This class will encapsulate the book information (ID, title, and author) and provide methods to access and modify the book data.
+
 class Book {
     private int id;
     private String title;
@@ -32,6 +34,10 @@ class Book {
         return author;
     }
 }
+// This class will be responsible for managing the collection of books. It will have the following methods:
+// addBooksFromFile(String filePath): This method will read the book information from the provided text file and add the books to the collection.
+// removeBook(int bookId): This method will remove a book from the collection using its unique ID number.
+// listAllBooks(): This method will display the list of all books currently in the collection.
 
 class Library {
     private Map<Integer, Book> books;
@@ -39,7 +45,7 @@ class Library {
     public Library() {
         books = new HashMap<>();
     }
-
+  //  addBooksFromFile(String filePath): Read book data from file and add to collection
     public void addBooksFromFile(String filePath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -65,7 +71,7 @@ class Library {
             System.out.println("Error reading file: " + e.getMessage());
         }
     }
-
+// removeBook(int bookId): Remove a book from the collection
     public void removeBook(int bookId) {
         if (books.containsKey(bookId)) {
             books.remove(bookId);
@@ -74,7 +80,7 @@ class Library {
             System.out.println("Book with ID " + bookId + " not found in the collection.");
         }
     }
-
+// listAllBooks(): Display the list of all books in the collection
     public void listAllBooks() {
         if (books.isEmpty()) {
             System.out.println("The collection is empty.");
@@ -86,7 +92,7 @@ class Library {
         }
     }
 }
-
+//main controller
 public class Module2SDLCAssignment {
     public static void main(String[] args) {
         Library library = new Library();
